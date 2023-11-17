@@ -1,4 +1,6 @@
-const word = document.querySelector('[data-word]')
+import {wordsArray} from './words.js'
+
+const $wordElm = document.querySelector('[data-word]')
 const text = document.querySelector('[data-text]')
 const $scoreElm = document.querySelector('[data-score]')
 const $timeElm = document.querySelector('[data-time]')
@@ -6,7 +8,7 @@ const $endGameElm = document.querySelector('[data-end-game-container]')
 const settingsBtn = document.querySelector('[data-settings-btn]')
 const settings = document.querySelector('[data-settings]')
 const settingsForm = document.querySelector('[data-settings-form]')
-const difficulty = document.querySelector('[difficulty]')
+const difficultySelection = document.querySelector('[difficulty]')
 
 let randomWord
 let score = 0
@@ -17,7 +19,7 @@ let difficulty =
     ? localStorage.getItem('difficulty') 
     : 'medium'
 
-difficultySelect.value = 
+difficultySelection.value = 
   localStorage.getItem('difficulty') !== null
     ? localStorage.getItem('difficulty')
     : 'medium'
@@ -28,19 +30,25 @@ difficultySelect.value =
 const timeInterval = setInterval(updateTime, 1000)
 
 function getRandomWord() {
-  return words[Math.floor(Math.random() * words.length)]
+  return wordsArray[Math.floor(Math.random() * wordsArray.length)]
 }
 
 // Add word to the DOM
 function addWordDOM() {
   randomWord = getRandomWord()
-  word.innerHTML = randomWord
+  $wordElm.innerHTML = randomWord
 }
 
 // Update score 
 function updateScore() {
   score++
-  $scoreElm.innerHTML = `${time}s`
+  $scoreElm.innerHTML = score
+}
+
+// Update time
+function updateTime() {
+  time--
+  $timeElm.innerHTML = `${time}s`
 
   if (time === 0) {
     clearInterval(timeInterval)
