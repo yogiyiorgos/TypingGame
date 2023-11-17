@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width' , initial-scale=1.0' />
+  <link rel='stylesheet' href='style.css' />
+  <title>Typing Speed Game</title>
+</head>
+
+<body>
+  <button class='settings-btn' data-settings-btn>
+    <img src='assets/cog.svg' alt='Settings' />
+  </button>
+
+  <div class='settings' data-settings>
+    <form data-settings-form>
+      <div>
+        <label for='difficulty'>Difficulty</label>
+        <select id='difficulty'>
+          <option value='easy'>Easy</option>
+          <option value='medium'>Medium</option>
+          <option value='hard'>Hard</option>
+        </select>
+      </div>
+    </form>
+  </div>
+
+  <div class='container'>
+    <h2>💻 Speed Type 💻</h2>
+    <small>Type the following:</small>
+
+    <h1 data-word></h1>
+
+    <input type='text' autocomlete='off' placeholder='Type the word here...' autofocus data-text />
+
+    <p class='time-container'>Time left: <span data-time>10s</span></p>
+    <p class='score-container'>Score: <span data-score>0</span></p>
+
+    <div class='end-game-container' data-end-game-container></div>
+  </div>
+
+  <script src='script.js'></script>
+</body>
+
+</html>
